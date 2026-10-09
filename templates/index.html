@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mini SOC | Security Dashboard</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <aside class="sidebar">
+        <h2>🛡 MINI SOC</h2>
+        <p class="muted">SECURITY OPERATIONS</p>
+        <nav>
+            <a class="active" href="/">Dashboard</a>
+            <a href="#alerts">Alerts</a>
+            <a href="#events">Event Logs</a>
+        </nav>
+        <div class="sidebar-bottom">
+            <span class="status-dot"></span> Monitoring Active
+        </div>
+    </aside>
+
+    <main class="main">
+        <header class="topbar">
+            <div>
+                <p class="muted">SECURITY / OVERVIEW</p>
+                <h1>Security Dashboard</h1>
+                <p class="muted">Monitor events and detect suspicious activity.</p>
+            </div>
+            <button onclick="loadDashboard()">↻ Refresh</button>
+        </header>
+
+        <section class="cards">
+            <article class="metric">
+                <p>Total Events</p>
+                <h2 id="total-events">—</h2>
+                <span>Recorded events</span>
+            </article>
+            <article class="metric">
+                <p>Failed Logins</p>
+                <h2 id="failed-logins">—</h2>
+                <span>Authentication failures</span>
+            </article>
+            <article class="metric">
+                <p>Successful Logins</p>
+                <h2 id="successful-logins">—</h2>
+                <span>Successful authentication</span>
+            </article>
+            <article class="metric">
+                <p>High Alerts</p>
+                <h2 id="high-alerts">—</h2>
+                <span>Requires investigation</span>
+            </article>
+        </section>
+
+        <section class="panel">
+            <h2>Authentication Overview</h2>
+            <canvas id="loginChart"></canvas>
+        </section>
+
+        <section class="panel" id="alerts">
+            <h2>Security Alerts</h2>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Severity</th>
+                            <th>Alert</th>
+                            <th>Source IP</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody id="alerts-body"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <section class="panel" id="events">
+            <h2>Recent Security Events</h2>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Time</th>
+                            <th>Source IP</th>
+                            <th>Username</th>
+                            <th>Event</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody id="events-body"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <footer>Mini SOC • Local security monitoring lab</footer>
+    </main>
+
+    <script src="/static/script.js"></script>
+</body>
+</html>
